@@ -6,10 +6,10 @@ registerApplication(
   location => location.pathname.startsWith('/app1'),
 )
 
-registerApplication(
-  'react',
-  () => import('./react'),
-  location => location.pathname.startsWith('/react'),
-)
+// registerApplication(
+//   'react',
+//   () => import('./react'),
+//   location => location.pathname.startsWith('/react'),
+// )
 
 start()

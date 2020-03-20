@@ -3,11 +3,12 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = env => ({
   entry: {
-    'root-config': `${__dirname}/src/root-config.ts`,
+    index: `${__dirname}/src/index.tsx`,
   },
   output: {
     path: `${__dirname}/dist`,
     filename: '[name].js',
+    publicPath: '/react/',
   },
 
   resolve: {
@@ -26,15 +27,8 @@ module.exports = env => ({
   plugins: [
     new HtmlWebpackPlugin({
       template: `${__dirname}/src/index.html`,
-      scriptLoading: 'defer',
-      inject: 'head',
-      // templateParameters: {
-      //   isLocal: env && env.isLocal === 'true',
-      // },
     }),
   ],
-
-  // externals: ['single-spa', /^@react-mf\/.+$/],
 
   devServer: {
     historyApiFallback: true,
