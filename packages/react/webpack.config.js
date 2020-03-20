@@ -1,12 +1,15 @@
 // @ts-check
-const HtmlWebpackPlugin = require('html-webpack-plugin')
+const path = require('path')
+
+const root = path.resolve(__dirname, '../../')
+const basename = path.basename(__dirname)
 
 module.exports = env => ({
   entry: {
     index: `${__dirname}/src/index.tsx`,
   },
   output: {
-    path: `${__dirname}/dist`,
+    path: `${root}/public/dist/${basename}`,
     filename: '[name].js',
     publicPath: '/react/',
   },
@@ -22,19 +25,5 @@ module.exports = env => ({
         exclude: /node_modules/,
       },
     ],
-  },
-
-  plugins: [
-    new HtmlWebpackPlugin({
-      template: `${__dirname}/src/index.html`,
-    }),
-  ],
-
-  devServer: {
-    historyApiFallback: true,
-    disableHostCheck: true,
-    headers: {
-      'Access-Control-Allow-Origin': '*',
-    },
   },
 })
