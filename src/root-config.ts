@@ -1,4 +1,3 @@
-// @ts-check
 import * as singleSpa from 'single-spa'
 
 singleSpa.registerApplication(

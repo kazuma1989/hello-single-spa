@@ -3,24 +3,25 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = env => ({
   entry: {
-    'root-config': `${__dirname}/src/root-config`,
+    'root-config': `${__dirname}/src/root-config.ts`,
   },
   output: {
     path: `${__dirname}/dist`,
     filename: '[name].js',
   },
 
-  // devtool: 'sourcemap',
-  // module: {
-  //   rules: [
-  //     // { parser: { system: false } },
-  //     {
-  //       test: /\.js$/,
-  //       exclude: /node_modules/,
-  //       use: [{ loader: 'babel-loader' }],
-  //     },
-  //   ],
-  // },
+  resolve: {
+    extensions: ['.tsx', '.ts', '.js'],
+  },
+  module: {
+    rules: [
+      {
+        test: /\.tsx?$/,
+        use: 'ts-loader',
+        exclude: /node_modules/,
+      },
+    ],
+  },
 
   plugins: [
     new HtmlWebpackPlugin({

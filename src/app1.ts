@@ -1,4 +1,3 @@
-// @ts-check
 let domEl
 
 export function bootstrap(props) {
