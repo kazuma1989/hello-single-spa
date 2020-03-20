@@ -1,9 +1,15 @@
-import * as singleSpa from 'single-spa'
+import { registerApplication, start } from 'single-spa'
 
-singleSpa.registerApplication(
+registerApplication(
   'app1',
   () => import('./app1'),
   location => location.pathname.startsWith('/app1'),
 )
 
-singleSpa.start()
+registerApplication(
+  'react',
+  () => import('./react'),
+  location => location.pathname.startsWith('/react'),
+)
+
+start()
