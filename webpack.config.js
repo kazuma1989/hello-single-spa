@@ -1,10 +1,13 @@
+// @ts-check
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = env => ({
-  entry: `${__dirname}/src/root-config`,
+  entry: {
+    'root-config': `${__dirname}/src/root-config`,
+  },
   output: {
     path: `${__dirname}/dist`,
-    // filename: 'root-config.js',
+    filename: '[name].js',
   },
 
   // devtool: 'sourcemap',
@@ -19,6 +22,19 @@ module.exports = env => ({
   //   ],
   // },
 
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: `${__dirname}/src/index.html`,
+      scriptLoading: 'defer',
+      inject: 'head',
+      // templateParameters: {
+      //   isLocal: env && env.isLocal === 'true',
+      // },
+    }),
+  ],
+
+  // externals: ['single-spa', /^@react-mf\/.+$/],
+
   devServer: {
     historyApiFallback: true,
     disableHostCheck: true,
@@ -26,17 +42,4 @@ module.exports = env => ({
       'Access-Control-Allow-Origin': '*',
     },
   },
-
-  plugins: [
-    new HtmlWebpackPlugin(),
-    // new HtmlWebpackPlugin({
-    //   // inject: false,
-    //   // template: 'src/index.ejs',
-    //   // templateParameters: {
-    //   //   isLocal: env && env.isLocal === 'true',
-    //   // },
-    // }),
-  ],
-
-  // externals: ['single-spa', /^@react-mf\/.+$/],
 })
