@@ -4,7 +4,7 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "build": "parcel build ./src/index.ts --out-dir ../../public/dist/cycle-js"
+    "build": "parcel build ./src/index.ts --out-dir ../../public/dist/cycle-js/"
   },
   "dependencies": {
     "@cycle/dom": "^22.4.0",
