@@ -2,6 +2,7 @@ import {
   registerApplication,
   start,
 } from 'https://unpkg.com/single-spa@5.2.0/lib/esm/single-spa.min.js'
+import { insertScript } from './util.js'
 
 registerApplication(
   'app-cycle-js',
@@ -41,15 +42,3 @@ registerApplication(
 )
 
 start()
-
-async function insertScript(src, parent = document.head) {
-  return new Promise(resolve => {
-    const script = document.createElement('script')
-    script.onload = resolve
-
-    script.async = true
-    script.src = src
-
-    parent.appendChild(script)
-  })
-}
