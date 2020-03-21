@@ -19,7 +19,7 @@ registerApplication(
       window['app-cycle-js'].unmount()
     },
   },
-  location => location.pathname.startsWith('/cycle-js'),
+  location => location.pathname.startsWith('/cycle-js/'),
 )
 
 registerApplication(
@@ -38,7 +38,7 @@ registerApplication(
       window['app-react'].unmount()
     },
   },
-  location => location.pathname.startsWith('/react'),
+  location => location.pathname.startsWith('/react/'),
 )
 
 start()
