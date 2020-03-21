@@ -19,17 +19,34 @@ registerApplication(
 )
 
 registerApplication(
-  'react',
+  'app-react',
   {
-    async bootstrap() {},
-    async mount() {
-      import('/dist/react/index.js')
+    async bootstrap() {
+      await insertScript('/dist/react/vendors~index.js')
+      await insertScript('/dist/react/index.js')
     },
+
+    async mount() {
+      window['app-react'].mount()
+    },
+
     async unmount() {
-      ;(await import('/dist/react/index.js')).unmount()
+      window['app-react'].unmount()
     },
   },
   location => location.pathname.startsWith('/react'),
 )
 
 start()
+
+async function insertScript(src, parent = document.head) {
+  return new Promise(resolve => {
+    const script = document.createElement('script')
+    script.onload = resolve
+
+    script.async = true
+    script.src = src
+
+    parent.appendChild(script)
+  })
+}

@@ -1,9 +1,15 @@
 // @ts-check
+/**
+ * @typedef {import('webpack').Configuration} Configuration
+ */
 const path = require('path')
 
 const root = path.resolve(__dirname, '../../')
 const basename = path.basename(__dirname)
 
+/**
+ * @type {(env: unknown) => Configuration}
+ */
 module.exports = env => ({
   entry: {
     index: `${__dirname}/src/index.tsx`,
@@ -12,6 +18,14 @@ module.exports = env => ({
     path: `${root}/public/dist/${basename}`,
     filename: '[name].js',
     publicPath: '/react/',
+    library: 'app-react',
+    libraryTarget: 'window',
+  },
+
+  optimization: {
+    splitChunks: {
+      chunks: 'all',
+    },
   },
 
   resolve: {
