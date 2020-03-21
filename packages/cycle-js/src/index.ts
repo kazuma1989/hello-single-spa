@@ -51,11 +51,12 @@ const drivers = {
   DOM: makeDOMDriver('#root'),
 }
 
+let dispose: ReturnType<typeof run>
+
 export async function mount() {
-  run(main, drivers)
+  dispose = run(main, drivers)
 }
 
 export async function unmount() {
-  // TODO implement
-  console.log('Cycle.js unmounted')
+  dispose()
 }
