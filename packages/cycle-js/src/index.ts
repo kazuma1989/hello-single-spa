@@ -51,4 +51,11 @@ const drivers = {
   DOM: makeDOMDriver('#root'),
 }
 
-run(main, drivers)
+export async function mount() {
+  run(main, drivers)
+}
+
+export async function unmount() {
+  // TODO implement
+  console.log('Cycle.js unmounted')
+}

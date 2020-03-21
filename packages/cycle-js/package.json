@@ -4,8 +4,11 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "build": "parcel build ./src/index.ts --out-dir ../../public/dist/cycle-js/"
+    "build": "parcel build ./src/index.ts --global app-cycle-js --out-dir ../../public/dist/cycle-js/"
   },
+  "browserslist": [
+    "last 1 Chrome versions"
+  ],
   "dependencies": {
     "@cycle/dom": "^22.4.0",
     "@cycle/run": "^5.3.0",

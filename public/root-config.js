@@ -4,15 +4,18 @@ import {
 } from 'https://unpkg.com/single-spa@5.2.0/lib/esm/single-spa.min.js'
 
 registerApplication(
-  'cycle-js',
+  'app-cycle-js',
   {
-    async bootstrap() {},
-    async mount() {
-      import('/dist/cycle-js/index.js')
+    async bootstrap() {
+      await insertScript('/dist/cycle-js/index.js')
     },
+
+    async mount() {
+      window['app-cycle-js'].mount()
+    },
+
     async unmount() {
-      // TODO implementation
-      // ;(await import('/dist/cycle-js/index.js')).unmount()
+      window['app-cycle-js'].unmount()
     },
   },
   location => location.pathname.startsWith('/cycle-js'),
