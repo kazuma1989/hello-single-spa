@@ -10,8 +10,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
  */
 module.exports = env => ({
   entry: {
-    index: `${__dirname}/src/index.tsx`,
-    nav: `${__dirname}/src/nav.tsx`,
+    'root-config': `${__dirname}/src/root-config.ts`,
   },
   output: {
     path: `${__dirname}/dist/`,
@@ -47,4 +46,9 @@ module.exports = env => ({
       template: `${__dirname}/src/index.pug`,
     }),
   ],
+
+  // @ts-ignore
+  devServer: {
+    historyApiFallback: true,
+  },
 })

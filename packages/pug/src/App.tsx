@@ -3,7 +3,7 @@ import { BrowserRouter, Route, Switch, Link } from 'react-router-dom'
 
 export function App() {
   return (
-    <BrowserRouter basename="/react/">
+    <BrowserRouter basename="/pug/">
       <div className="content">
         <div>React app</div>
 
