@@ -14,7 +14,10 @@ function Nav() {
   )
 }
 
-const root = document.getElementById('app-nav')!
+let root: Element
+export async function bootstrap() {
+  root = document.getElementById('app-nav')!
+}
 
 export async function mount() {
   ReactDOM.render(<Nav />, root)
