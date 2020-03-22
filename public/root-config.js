@@ -5,6 +5,25 @@ import {
 import { insertScript } from './util.js'
 
 registerApplication(
+  'app-nav',
+  {
+    async bootstrap() {
+      await insertScript('/dist/react/vendors.js')
+      await insertScript('/dist/react/nav.js')
+    },
+
+    async mount() {
+      window['app-react'].nav.mount()
+    },
+
+    async unmount() {
+      window['app-react'].nav.unmount()
+    },
+  },
+  location => location.pathname.startsWith('/'),
+)
+
+registerApplication(
   'app-cycle-js',
   {
     async bootstrap() {
@@ -26,16 +45,16 @@ registerApplication(
   'app-react',
   {
     async bootstrap() {
-      await insertScript('/dist/react/vendors~index.js')
+      await insertScript('/dist/react/vendors.js')
       await insertScript('/dist/react/index.js')
     },
 
     async mount() {
-      window['app-react'].mount()
+      window['app-react'].index.mount()
     },
 
     async unmount() {
-      window['app-react'].unmount()
+      window['app-react'].index.unmount()
     },
   },
   location => location.pathname.startsWith('/react/'),

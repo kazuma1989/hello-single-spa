@@ -48,7 +48,7 @@ function main({ DOM }: Sources): Sinks {
   }
 }
 
-const appRoot = document.getElementById('app-root')
+const appRoot = document.getElementById('app-main')
 const drivers = {
   DOM: makeDOMDriver(appRoot),
 }

@@ -13,17 +13,18 @@ const basename = path.basename(__dirname)
 module.exports = env => ({
   entry: {
     index: `${__dirname}/src/index.tsx`,
+    nav: `${__dirname}/src/nav.tsx`,
   },
   output: {
     path: `${root}/public/dist/${basename}`,
     filename: '[name].js',
-    publicPath: '/react/',
-    library: 'app-react',
+    library: ['app-react', '[name]'],
     libraryTarget: 'window',
   },
 
   optimization: {
     splitChunks: {
+      name: 'vendors',
       chunks: 'all',
     },
   },
