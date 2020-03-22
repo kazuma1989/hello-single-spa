@@ -48,25 +48,27 @@ function main({ DOM }: Sources): Sinks {
   }
 }
 
+const shadowRoot = document.getElementById('app-host').shadowRoot
 const drivers = {
-  DOM: makeDOMDriver('#root'),
+  DOM: makeDOMDriver(shadowRoot.getElementById('app-root')),
 }
-
-let dispose: ReturnType<typeof run>
-let remove: ReturnType<typeof insertStyleSheet>[0]
 
 export async function mount() {
-  const [_remove, loaded] = insertStyleSheet(
+  const [remove, loading] = insertStyleSheet(
     'https://unpkg.com/semantic-ui@2.4.2/dist/semantic.min.css',
+    shadowRoot,
   )
-  remove = _remove
+  await loading
 
-  await loaded
+  const dispose = run(main, drivers)
 
-  dispose = run(main, drivers)
+  _unmount = () => {
+    dispose()
+    remove()
+  }
 }
 
+let _unmount: () => void
 export async function unmount() {
-  remove()
-  dispose()
+  _unmount()
 }

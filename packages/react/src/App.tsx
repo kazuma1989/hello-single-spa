@@ -4,7 +4,7 @@ import { BrowserRouter, Route, Switch, Link } from 'react-router-dom'
 export function App() {
   return (
     <BrowserRouter basename="/react/">
-      <div>
+      <div className="content">
         <div>React app</div>
 
         <ul>

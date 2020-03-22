@@ -41,4 +41,11 @@ registerApplication(
   location => location.pathname.startsWith('/react/'),
 )
 
+const shadowRoot = document
+  .getElementById('app-host')
+  .attachShadow({ mode: 'open' })
+shadowRoot.innerHTML = `
+  <div id="app-root"></div>
+`
+
 start()
