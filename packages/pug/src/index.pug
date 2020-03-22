@@ -1,0 +1,13 @@
+//- SiteCatalyst 用 s_code.js のパス
+- const s_code = 'https://example.com/' + 'assets/vendors/s_code.js'
+
+doctype html
+html(lang="ja")
+  head
+    meta(charset="utf-8")
+    title スタディサプリ ENGLISH
+    meta(name="viewport" content="width=device-width, initial-scale=1")
+    meta(name="robots" content="noindex,nofollow")
+    script(src=s_code)
+  body
+    div(id="app")
