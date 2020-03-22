@@ -48,15 +48,14 @@ function main({ DOM }: Sources): Sinks {
   }
 }
 
-const shadowRoot = document.getElementById('app-host').shadowRoot
+const appRoot = document.getElementById('app-root')
 const drivers = {
-  DOM: makeDOMDriver(shadowRoot.getElementById('app-root')),
+  DOM: makeDOMDriver(appRoot),
 }
 
 export async function mount() {
   const [remove, loading] = insertStyleSheet(
     'https://unpkg.com/semantic-ui@2.4.2/dist/semantic.min.css',
-    shadowRoot,
   )
   await loading
 

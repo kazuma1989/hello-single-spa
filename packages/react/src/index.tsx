@@ -3,20 +3,18 @@ import ReactDOM from 'react-dom'
 import { insertStyleSheet } from './util'
 import { App } from './App'
 
-const shadowRoot = document.getElementById('app-host')!.shadowRoot!
+const appRoot = document.getElementById('app-root')!
 
 export async function mount() {
   const [remove, loading] = insertStyleSheet(
     'https://unpkg.com/bulma@0.8.0/css/bulma.min.css',
-    shadowRoot,
   )
   await loading
 
-  const root = shadowRoot.getElementById('app-root')!
-  ReactDOM.render(<App />, root)
+  ReactDOM.render(<App />, appRoot)
 
   _unmount = () => {
-    ReactDOM.unmountComponentAtNode(root)
+    ReactDOM.unmountComponentAtNode(appRoot)
     remove()
   }
 }
